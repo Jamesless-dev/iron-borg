@@ -45,12 +45,32 @@ export default function AuthenticatedLayout({ children }) {
             name: "Dashboard",
             href: route("dashboard"),
             icon: LayoutDashboard,
-            active: true,
+            activeRoute: "dashboard",
         },
-        { name: "Miembros", href: "#", icon: Users },
-        { name: "Membresías", href: "#", icon: CreditCard },
-        { name: "Asistencia", href: "#", icon: Clock },
-        { name: "Pagos y Facturas", href: "#", icon: Receipt },
+        {
+            name: "Miembros",
+            href: route("miembros.index"),
+            icon: Users,
+            activeRoute: "miembros.*",
+        },
+        {
+            name: "Membresías",
+            href: "#",
+            icon: CreditCard,
+            activeRoute: "membresias.*",
+        },
+        {
+            name: "Asistencia",
+            href: "#",
+            icon: Clock,
+            activeRoute: "asistencias.*",
+        },
+        {
+            name: "Pagos y Facturas",
+            href: "#",
+            icon: Receipt,
+            activeRoute: "pagos.*",
+        },
     ];
 
     const getRoleColor = (rol) => {
@@ -134,7 +154,10 @@ export default function AuthenticatedLayout({ children }) {
                     <div className="space-y-1">
                         {menuItems.map((item) => {
                             const Icon = item.icon;
-                            const isActive = item.active;
+                            const isActive =
+                                item.activeRoute &&
+                                route().current(item.activeRoute);
+
                             return (
                                 <Link
                                     key={item.name}
