@@ -55,7 +55,7 @@ export default function AuthenticatedLayout({ children }) {
         },
         {
             name: "Membresías",
-            href: "#",
+            href: route("membresias.index"),
             icon: CreditCard,
             activeRoute: "membresias.*",
         },
@@ -169,7 +169,7 @@ export default function AuthenticatedLayout({ children }) {
                                     }`}
                                 >
                                     <Icon
-                                        className={`w-4.5 h-4.5 ${isActive ? "text-white" : "text-slate-400 group-hover:text-white"}`}
+                                        className={`w-5 h-5 ${isActive ? "text-white" : "text-slate-400 group-hover:text-white"}`}
                                     />
                                     <span>{item.name}</span>
                                 </Link>
@@ -186,7 +186,7 @@ export default function AuthenticatedLayout({ children }) {
                         as="button"
                         className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-red-400 hover:bg-red-500/10 hover:text-red-300 transition-all duration-200"
                     >
-                        <LogOut className="w-4.5 h-4.5" />
+                        <LogOut className="w-5 h-5" />
                         <span>Cerrar Sesión</span>
                     </Link>
                 </div>
