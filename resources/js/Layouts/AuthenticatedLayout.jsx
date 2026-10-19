@@ -61,9 +61,9 @@ export default function AuthenticatedLayout({ children }) {
         },
         {
             name: "Asistencia",
-            href: "#",
+            href: route("asistencia.index"),
             icon: Clock,
-            activeRoute: "asistencias.*",
+            activeRoute: "asistencia.*",
         },
         {
             name: "Pagos y Facturas",
