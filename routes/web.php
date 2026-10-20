@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MiembroController;
 use App\Http\Controllers\MembresiaController;
 use App\Http\Controllers\AsistenciaController; 
+use App\Http\Controllers\PagoController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,6 +31,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/asistencia/checkin', [AsistenciaController::class, 'checkIn'])->name('asistencia.checkin');
     Route::post('/asistencia/checkout', [AsistenciaController::class, 'checkOut'])->name('asistencia.checkout');
     Route::get('/asistencia/exportar', [AsistenciaController::class, 'exportar'])->name('asistencia.exportar');
+
+    //pagos y facturas
+    Route::resource('pagos', PagoController::class);
 });
 
 require __DIR__.'/auth.php';
