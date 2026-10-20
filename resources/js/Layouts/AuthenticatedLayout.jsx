@@ -67,7 +67,7 @@ export default function AuthenticatedLayout({ children }) {
         },
         {
             name: "Pagos y Facturas",
-            href: "#",
+            href: route("pagos.index"),
             icon: Receipt,
             activeRoute: "pagos.*",
         },
