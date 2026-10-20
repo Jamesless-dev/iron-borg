@@ -6,7 +6,6 @@ use App\Models\Miembro;
 use App\Models\Pago;
 use App\Models\Venta;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class DashboardController extends Controller
@@ -28,7 +27,7 @@ class DashboardController extends Controller
             ->where('estado', 'completado')
             ->sum('total');
 
-        $ingresosMes = $ingresosPagos + $ingresosVentas;
+        $ingresosMes = (float) $ingresosPagos + (float) $ingresosVentas;
 
         // Miembros por vencer en 7 días
         $porVencer = Miembro::where('membresia_activa', true)
@@ -55,7 +54,7 @@ class DashboardController extends Controller
 
             $chartData[] = [
                 'mes' => $mes->format('M'),
-                'ingresos' => round($pagos + $ventas, 2),
+                'ingresos' => round((float) $pagos + (float) $ventas, 2),
             ];
         }
 
